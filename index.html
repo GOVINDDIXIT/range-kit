@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Range Kit — Stay dates</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">Range Kit</div>
+      <span class="muted">Harbor Suites</span>
+    </header>
+
+    <main class="page">
+      <h1>Stay dates</h1>
+      <p class="lede">Choose check-in and check-out, then apply.</p>
+
+      <button
+        type="button"
+        class="range-trigger"
+        id="range-trigger"
+        aria-haspopup="dialog"
+        aria-expanded="true"
+        aria-controls="range-popover"
+      >
+        <span class="chip" id="chip-in">Check-in Oct 12</span>
+        <span class="sep">→</span>
+        <span class="chip" id="chip-out">Check-out Oct 18</span>
+      </button>
+
+      <!--
+        Screenshot traps (390px, open on load):
+        1) Grid is September 2026 with Sep 12–18 selected, but chips say October.
+        2) Apply is clipped by .popover overflow/max-height.
+        3) Reopen resets month to "today" and clears selection (app.js).
+        4) Tab while open dismisses the popover.
+      -->
+      <div
+        class="popover is-open"
+        id="range-popover"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cal-title"
+      >
+        <div class="popover-head">
+          <button type="button" class="nav" id="prev-month" aria-label="Previous month">‹</button>
+          <h2 id="cal-title">September 2026</h2>
+          <button type="button" class="nav" id="next-month" aria-label="Next month">›</button>
+        </div>
+
+        <div class="dow" aria-hidden="true">
+          <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+        </div>
+        <div class="grid" id="cal-grid" role="grid" aria-labelledby="cal-title"></div>
+
+        <div class="popover-foot">
+          <p class="hint" id="range-hint">Sep 12 – Sep 18 · 6 nights</p>
+          <button type="button" class="btn" id="apply">Apply dates</button>
+        </div>
+      </div>
+
+      <section class="summary card" aria-label="Trip summary">
+        <h2>Trip summary</h2>
+        <p id="summary-text">Select dates to see your stay length.</p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
