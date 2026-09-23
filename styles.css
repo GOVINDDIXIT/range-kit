@@ -96,7 +96,7 @@ h1 {
   border-radius: 16px;
   box-shadow: 0 16px 40px rgba(15, 28, 36, 0.14);
   /* TRAP: clips Apply on ~390px phones */
-  max-height: 390px;
+  max-height: 350px;
   overflow: hidden;
 }
 
@@ -230,6 +230,6 @@ h1 {
   }
 
   .popover {
-    max-height: 360px;
+    max-height: 320px;
   }
 }
